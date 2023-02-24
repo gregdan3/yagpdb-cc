@@ -15,5 +15,5 @@
     {{ addRoleID $muteRole }}
     {{ /* addRoleID $noViewRole */ }}
     {{ $ticket := createTicket nil (printf "%s new" $user.Username) }}
-    {{ sendMessageNoEscape $ticket.ChannelID (printf "Hello %s. We're checking newly created Discord accounts for community safety. If possible, please link a social media account to your Discord account, provide a link to a social media account you have, or name a friend who can vouch for you. Alternatively, please explain how you found the server, and/or how you found out about Toki Pona. A moderator will be here shortly to help. Thank you!" $user.Mention) }}
+    {{ sendMessageNoEscape $ticket.ChannelID (printf "Hello %s. We're checking newly created Discord accounts for community safety. If possible, please link a social media account to your Discord account, provide a link to a social media account you have, or name a friend who can vouch for you. Alternatively, please explain how you found the server. A moderator will be here shortly to help. Thank you!" $user.Mention) }}
 {{ end }}
