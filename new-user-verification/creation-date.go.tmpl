@@ -1,0 +1,21 @@
+{{/*
+  Trigger Type: Join Message (Server)
+  Save this code in 'Notifications & Feeds > General > Join message in server channel
+*/}}
+
+{{ $muteRole := YOUR_MUTE_ROLE_ID }}
+{{ /* $noViewRole := YOUR_NO_VIEW_ROLE_ID */ }}
+
+{{ $minCreationDate := (currentTime.Sub (newDate 2023 08 1 0 0 0)) }}
+
+{{ $createdAt := div .User.ID 4194304 | add 1420070400000 | mult 1000000 | toDuration | (newDate 1970 1 1 0 0 0).Add }}
+{{ $age := (currentTime.Sub $createdAt) }}
+
+{{ if lt $age $minCreationDate }}
+    {{ addRoleID $muteRole }}
+    {{/* addRoleID $noViewRole */}}
+    {{ $ticket := createTicket nil (printf "%s new" .User.Username) }}
+    {{ sendMessageNoEscape $ticket.ChannelID (printf "Hello %s. We're checking newly created Discord accounts for community safety. Please link a social media account to your Discord account, or name a friend who can vouch for you. Alternatively, please explain how you found the server. A mod will be here shortly to discuss with you. Thanks!" .User.Mention) }}
+{{else}}
+    {{/* the user has been let into the server; you could put a join message here */}}
+{{ end }}
