@@ -4,7 +4,6 @@
 */}}
 
 {{ $muteRole := YOUR_MUTE_ROLE_ID }}
-{{ /* $noViewRole := YOUR_NO_VIEW_ROLE_ID */ }}
 
 {{ $minAccAgeDays := 21 }}
 
@@ -13,7 +12,6 @@
 
 {{ if lt $age.Hours (mult 24.0 $minAccAgeDays) }}
     {{ addRoleID $muteRole }}
-    {{/* addRoleID $noViewRole */}}
     {{ $ticket := createTicket nil (printf "%s new" .User.Username) }}
     {{ sendMessageNoEscape $ticket.ChannelID (printf "Hello %s. We're checking newly created Discord accounts for community safety. Please link a social media account to your Discord account, or name a friend who can vouch for you. Alternatively, please explain how you found the server. A mod will be here shortly to discuss with you. Thanks!" .User.Mention) }}
 {{else}}

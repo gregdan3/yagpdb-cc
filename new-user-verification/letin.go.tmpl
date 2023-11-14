@@ -2,10 +2,8 @@
     (carg "userid" "user to let in") }}
 
 {{ $userid := ($args.Get 0) }}
-{{ $muteRole := 356258228679737344 }}
-{{/* $noViewRole := 1076862878440751135 */}}
+{{ $muteRole := YOUR_MUTE_ROLE_ID }}
 
 {{ takeRoleID $userid $muteRole }}
-{{/* takeRoleID $userid $noViewRole */}}
 
 {{/* You could put a join message here; the default verifier will prevent join messages from occurring for ticketed users. */}}
