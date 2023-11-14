@@ -1,0 +1,29 @@
+{{/*
+  Trigger Type: Command
+  Save this in Core > Custom commands
+  Execute with `-talk [user] [reason]`
+
+  By @gregdan3
+*/}}
+
+{{ $logChannel := YOUR_LOG_CHANNEL_ID }}
+
+{{ $args := parseArgs 2 (printf "Use -talk like -mute, providing a user to talk to and the reason for the discussion. This will open a ticket.")
+	(carg "user" "user to talk to")
+	(carg "string" "reason for the conversation")
+}}
+{{ $target := $args.Get 0 }}
+{{ $reason := $args.Get 1 }}
+
+{{ $ticket := createTicket $target.ID (printf "%s %s" $target.Username $reason) }}
+
+{{/* (printf "The mods would like to discuss the following with you in <#%d>: %s" $ticket.ChannelID $reason) */}}
+{{/* YAGPDB cannot send a dm to a user who is not the one who triggered the command */}}
+
+{{/* this mimics YAGPDB's logging */}}
+{{ sendMessage $logChannel (cembed
+      "description" (printf "🗣️**Talking to** %s (ID %d)\n📄**Reason**: %s" $target.Username $target.ID $reason )
+      "author" (sdict "name" (printf "%s (%d)" .User.Username .User.ID) "icon_url" (.User.AvatarURL "256"))
+      "thumbnail" (sdict "url" ($target.AvatarURL "256"))
+      "color" 16776960)
+}}
