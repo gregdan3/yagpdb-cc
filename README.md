@@ -8,8 +8,8 @@ Commands here are primarily used in servers I admin. Feel free to use them!
 
 - [Mass Ban](./massban/README.md): Ban a long list of User IDs with minimal manual input. [If you're dealing with a ban evader, check this out.](https://gist.github.com/gregdan3/e6c883ca5fc1624b15dfbb2cc1080883)
 - [New User Verification](./new-user-verification/README.md): Catch new accounts and ticket.
-- [Temperature Check](./temperature-check/README.md): See how a conversation is going.
 - [Talk](./talk/README.md): Start a conversation with a user in a ticket.
+<!-- - [Temperature Check](./temperature-check/README.md): See how a conversation is going. -->
 
 ## My Servers
 
