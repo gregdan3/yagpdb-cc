@@ -1,16 +1,13 @@
 {{/*
   Trigger Type: Command
   Save this in Core > Custom commands
-  Execute with `-massban [ids...]`, or your chosen command name
+  Execute with `-massban [ids...]` where `ids` is space delimited user IDs. 
 
   By @gregdan3
 */}}
 
-
 {{$sendto := YOUR_LOG_CHANNEL_ID}}
-{{$thiscc := THIS_CUSTOM_COMMAND_ID}}
 {{$ratelimitdelay := 12}}
-{{/* YAGPDB limits how many CC can run per minute, so the delay flies under it */}}
 
 {{$ban := .CmdArgs}}
 {{if .ExecData}}
@@ -31,7 +28,7 @@
 {{end}}
 
 {{if gt (len $ban) 0}}
-  {{- execCC $thiscc $sendto $ratelimitdelay (sdict "ban" $ban) -}}
+  {{- execCC .CCID $sendto $ratelimitdelay (sdict "ban" $ban) -}}
 {{else}}
   {{- sendMessage $sendto "Finished banning" -}}
 {{end}}

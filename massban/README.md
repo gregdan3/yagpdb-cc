@@ -10,12 +10,10 @@ Ban a list of users by their IDs in batches of 5 (the maximum number of `execAdm
 
 #### Parameters
 
-- `$sendto` is the ID of a channel which YAGPDB will send results to. I recommend using an internal channel, as the command is very noisy, but that is up to you.
-
-- `$thiscc` is not a parameter you can choose; you must fill in the ID of the custom command. This is found in the upper left of the custom command's page.
+- `$sendto` is the ID of a channel which YAGPDB will send results to. I recommend using an internal channel, as the command is noisy.
 - `$ratelimitdelay` is not a parameter either; it is a constant used to avoid YAGPDB's max number of custom commands executed per minute.
 
 #### Notes
 
-- Do not run more than one instance of this command at once. You'll defeat the purpose of the rate limiting!
+- Do not run more than one instance of this command at once. You'll trip the rate limiter, which may cause the command to fail and **can get your server banned from using YAGPDB**.
 - It is **highly** recommended to limit the command to both your admin role and to a specific channel, to not risk it being executed by a non-admin.
