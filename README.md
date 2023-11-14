@@ -13,7 +13,7 @@ Commands here are primarily used in servers I admin. Feel free to use them!
 
 ## My Servers
 
-<div align="center">
+<div>
   <a href="https://discord.gg/mapona">
     <img src="https://img.shields.io/discord/301377942062366741?style=plastic&logo=discord&logoColor=white&labelColor=5865F2&color=425549&label=ma%20pona%20pi%20toki%20pona" />
   </a>
